@@ -1,0 +1,26 @@
+
+257 bit representatino of board
+
+
+2 bits
+* blank
+* en pesseant
+
+7 x 2 bits 
+* pawn
+* bishop
+* knight 
+* rook
+* rook castle
+* queen 
+* king 
+
+
+
+
+8x8x4
+
+
+1 bit
+* to move
+
