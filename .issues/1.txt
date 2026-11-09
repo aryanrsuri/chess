@@ -1,0 +1,7 @@
+I=1
+D=2026-11-09T02:00:46+00:00
+S=open
+T=Implement slow chess board representation
+
+* This will use a struct, and will not be a bitboard.
+* To help me first understand the representation.

@@ -1,0 +1,24 @@
+-------
+ chess
+-------
+
+Entities
+* 32 Pieces
+  * 1 King
+  * 1 Queen
+  * 2 Rook
+  * 2 Bishop
+  * 2 Knight
+  * 8 Pawn
+* 64 Squares (Board)
+
+Properties
+* Piece { Color, Type }
+
+
+Relationships
+* Piece position (on square)
+* Can En passant
+* Has Castling Rights
+* Which colours turn
+
