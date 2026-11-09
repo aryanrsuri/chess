@@ -8,14 +8,15 @@ squares :: [64]union {
 }
 
 @(private)
-pos_from_start :: proc(x, y: u8) -> u8 {
-	return x + y * 8
-}
-
-@(private)
 pos_from_end :: proc(x: int) -> int {
 	// TODO: understand the math here
 	return (7 - x / 8) * 8 + x % 8
+}
+
+str_to_pos :: proc(loc: string) -> u8 {
+	x := loc[0] - 97
+	y := loc[1] - 49
+	return x + y * 8
 }
 
 init_squares :: proc() -> squares {
@@ -53,37 +54,30 @@ piece_to_str :: proc(piece: union {
 	if piece == nil {
 		return "."
 	}
-	p: string
-	switch piece.(ent_piece).prop_type {
-	case .King:
-		p = "K"
-	case .Queen:
-		p = "Q"
-	case .Knight:
-		p = "N"
-	case .Bishop:
-		p = "B"
-	case .Rook:
-		p = "R"
-	case .Pawn:
-		p = "P"
+	symbols := [piece_type]string {
+		.King   = "K",
+		.Queen  = "Q",
+		.Knight = "N",
+		.Bishop = "B",
+		.Rook   = "R",
+		.Pawn   = "P",
 	}
 
-	if !piece.(ent_piece).prop_color {
-		p = strings.to_lower(p)
 
+	p := symbols[piece.(ent_piece).prop_type]
+	if !piece.(ent_piece).prop_color {
+		return strings.to_lower(p)
 	}
 	return p
 }
 
 print_squares :: proc(squares: squares) {
-
 	for i := 0; i < 64; i += 1 {
 		if i != 0 && i % 8 == 0 {
 			fmt.printf("\n")
 		}
-		fmt.printf("%s ", piece_to_str(squares[i]))
+		fmt.printf("%s ", piece_to_str(squares[pos_from_end(i)]))
 
 	}
-
+	fmt.printf("\n")
 }
